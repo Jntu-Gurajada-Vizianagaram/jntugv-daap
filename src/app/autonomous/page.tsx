@@ -3,19 +3,18 @@
 import { useState } from 'react';
 import { collegesData } from '@/data/colleges';
 
-export default function AffiliatedCollegesPage() {
+export default function AutonomousCollegesPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<'All' | 'Engineering' | 'Pharmacy' | 'Management'>('All');
 
-  // Filter out autonomous colleges for this page
-  const affiliatedCollegesList = collegesData.filter(c => c.type !== 'AUTONOMOUS');
+  // Filter for only autonomous colleges
+  const autonomousCollegesList = collegesData.filter(c => c.type === 'AUTONOMOUS');
 
-  const filteredColleges = affiliatedCollegesList.filter(college => {
+  const filteredColleges = autonomousCollegesList.filter(college => {
     const matchesSearch = 
       college.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       college.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      college.district.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      college.type.toLowerCase().includes(searchTerm.toLowerCase());
+      college.district.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesCategory = activeCategory === 'All' || college.category === activeCategory;
 
@@ -24,10 +23,10 @@ export default function AffiliatedCollegesPage() {
 
   return (
     <div className="container" style={{ padding: '4rem 0' }}>
-      <h1 className="section-title">Affiliated Colleges</h1>
+      <h1 className="section-title">Autonomous Colleges</h1>
       <div className="card" style={{ padding: '2rem' }}>
         <p className="card-text" style={{ fontSize: '1.1rem', marginBottom: '2rem' }}>
-          JNTU-GV monitors and regulates the following affiliated Engineering, Pharmacy, and Management colleges to ensure academic standards and quality infrastructure.
+          The following institutions have been granted Autonomous status by the UGC and JNTU-GV, allowing them greater flexibility in curriculum design and academic administration.
         </p>
 
         {/* Filters and Search */}
@@ -61,7 +60,7 @@ export default function AffiliatedCollegesPage() {
             </svg>
             <input 
               type="text" 
-              placeholder="Search by Code, Name, or District..." 
+              placeholder="Search by Code or Name..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ width: '100%', border: 'none', outline: 'none', fontSize: '0.95rem', color: 'var(--foreground)' }}
@@ -73,14 +72,14 @@ export default function AffiliatedCollegesPage() {
         <div style={{ overflowX: 'auto', borderRadius: '12px', border: '1px solid var(--border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
             <thead>
-              <tr style={{ backgroundColor: 'var(--primary)', color: 'white' }}>
+              <tr style={{ backgroundColor: 'var(--deep-purple)', color: 'white' }}>
                 <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>S.No</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Code</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>College Name</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Category</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>District</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Type</th>
-                <th style={{ padding: '1.25rem 1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Website</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Code</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>College Name</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Category</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>District</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Status</th>
+                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Website</th>
               </tr>
             </thead>
             <tbody>
@@ -90,13 +89,13 @@ export default function AffiliatedCollegesPage() {
                     <td style={{ padding: '1rem', fontWeight: '500', color: 'var(--text-muted)' }}>{index + 1}</td>
                     <td style={{ padding: '1rem', fontWeight: '700', color: 'var(--primary)' }}>{college.code}</td>
                     <td style={{ padding: '1rem', fontWeight: '500' }}>{college.name}</td>
-                    <td style={{ padding: '1rem' }}><span style={{ backgroundColor: 'rgba(0, 75, 141, 0.1)', color: 'var(--primary)', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.8rem', fontWeight: '700' }}>{college.category}</span></td>
+                    <td style={{ padding: '1rem' }}><span style={{ backgroundColor: 'rgba(55, 10, 104, 0.1)', color: 'var(--deep-purple)', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.8rem', fontWeight: '700' }}>{college.category}</span></td>
                     <td style={{ padding: '1rem' }}>{college.district}</td>
                     <td style={{ padding: '1rem' }}>
                       <span style={{ 
                         padding: '0.35rem 0.75rem', 
-                        backgroundColor: college.type === 'PERMANENT' ? '#dcfce7' : '#fef9c3', 
-                        color: college.type === 'PERMANENT' ? '#166534' : '#854d0e', 
+                        backgroundColor: '#dbeafe', 
+                        color: '#1e40af', 
                         borderRadius: '6px', 
                         fontSize: '0.8rem', 
                         fontWeight: '800' 
@@ -113,7 +112,7 @@ export default function AffiliatedCollegesPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={7} style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '1.1rem' }}>No affiliated colleges found matching your criteria.</td>
+                  <td colSpan={7} style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '1.1rem' }}>No autonomous colleges found matching your criteria.</td>
                 </tr>
               )}
             </tbody>

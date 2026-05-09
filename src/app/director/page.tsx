@@ -33,9 +33,10 @@ export default function DirectorPage() {
           In addition to her role as Director DAAP, Prof. Dr. G. Jaya Suma serves as the Director (i/c) of Alumni Relations and is an Executive Council member of JNTU-GV. She is a former Registrar of JNTU-GV and has served as the Head of the IT Department, Special Officer for the New Engineering College in Kurupam, and IQAC Coordinator.
         </p>
 
-        <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: '#eff6ff', borderRadius: '0.5rem', width: '100%', textAlign: 'left', borderLeft: '4px solid var(--primary)' }}>
-          <h4 style={{ color: '#0f172a', marginBottom: '0.5rem' }}>Contact Office</h4>
-          <p style={{ color: 'var(--text-muted)' }}><strong>Email:</strong> daap@jntugv.edu.in</p>
+        <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: 'rgba(0, 75, 141, 0.05)', borderRadius: '0.5rem', width: '100%', textAlign: 'left', borderLeft: '4px solid var(--primary)' }}>
+          <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontWeight: '700' }}>Contact Office</h4>
+          <p style={{ color: 'var(--text-muted)' }}><strong>Email:</strong> daap@jntugv.edu.in (Official)</p>
+          <p style={{ color: 'var(--text-muted)' }}><strong>Office:</strong> daapoffice@jntugv.edu.in</p>
           <p style={{ color: 'var(--text-muted)' }}><strong>Website:</strong> <a href="https://daap.jntugv.edu.in" style={{ color: 'var(--primary)' }}>daap.jntugv.edu.in</a></p>
           <p style={{ color: 'var(--text-muted)' }}><strong>Location:</strong> Administrative Building, JNTU-GV, Vizianagaram</p>
         </div>

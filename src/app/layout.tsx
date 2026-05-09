@@ -21,36 +21,47 @@ export default function RootLayout({
         <header className="header">
           <div className="header-top">
             <div className="container">
-              <div>Jawaharlal Nehru Technological University - Gurajada, Vizianagaram</div>
-              <div>Email: daap@jntugv.edu.in</div>
+              <div className="header-top-left">
+                <span>Jawaharlal Nehru Technological University - Gurajada, Vizianagaram</span>
+              </div>
+              <div className="header-top-right">
+                <a href="mailto:daap@jntugv.edu.in">Email: daap@jntugv.edu.in</a>
+              </div>
             </div>
           </div>
-          <div className="header-main">
+
+          <div className="header-middle">
             <div className="container">
               <div className="logo-section">
+                <img src="https://jntugv.edu.in/static/media/jntugvcev.b33bb43b07b2037ab043.jpg" alt="JNTU-GV Logo" className="logo-img" />
                 <div className="logo-text">
-                  <span className="logo-title">JNTU-GV</span>
-                  <span className="logo-subtitle">DAAP Portal</span>
+                  <span className="logo-title">Directorate of Academic Audit and Planning (DAA&P)</span>
+                  <span className="logo-subtitle">Jawaharlal Nehru Technological University - Gurajada, Vizianagaram</span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="header-nav">
+            <div className="container">
               <nav>
                 <ul className="nav-menu">
                   <li className="nav-item">
                     <Link href="/" className="nav-link">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <span className="nav-link" style={{ cursor: 'pointer' }}>
+                    <span className="nav-link">
                       Administration
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </span>
                     <div className="dropdown">
                       <Link href="/vc" className="dropdown-item">Vice Chancellor</Link>
                       <Link href="/registrar" className="dropdown-item">Registrar</Link>
-                      <Link href="/director" className="dropdown-item">Director DAAP</Link>
+                      <Link href="/director" className="dropdown-item">Director DAA&P</Link>
                     </div>
                   </li>
                   <li className="nav-item">
-                    <span className="nav-link" style={{ cursor: 'pointer' }}>
+                    <span className="nav-link">
                       Academics
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </span>
@@ -62,17 +73,19 @@ export default function RootLayout({
                     </div>
                   </li>
                   <li className="nav-item">
-                    <span className="nav-link" style={{ cursor: 'pointer' }}>
-                      Affiliations & Audit
+                    <span className="nav-link">
+                      Affiliations
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </span>
                     <div className="dropdown">
                       <Link href="/affiliated" className="dropdown-item">Affiliated Colleges</Link>
+                      <Link href="/autonomous" className="dropdown-item">Autonomous Colleges</Link>
+                      <Link href="/ffc" className="dropdown-item">FFC Inspections</Link>
                       <Link href="/circulars" className="dropdown-item">Circulars & Notices</Link>
                     </div>
                   </li>
                   <li className="nav-item">
-                    <Link href="#contact" className="nav-link">Contact</Link>
+                    <Link href="/contact" className="nav-link">Contact</Link>
                   </li>
                 </ul>
               </nav>
@@ -86,7 +99,7 @@ export default function RootLayout({
           <div className="container">
             <div className="footer-grid">
               <div>
-                <h3 className="footer-heading">Directorate of Academic Audit and Planning (DAAP)</h3>
+                <h3 className="footer-heading">Directorate of Academic Audit and Planning (DA&P)</h3>
                 <p className="footer-text">
                   Jawaharlal Nehru Technological University - Gurajada, Vizianagaram<br />
                   Ensuring academic excellence and comprehensive planning for constituent and affiliated colleges.
@@ -104,14 +117,16 @@ export default function RootLayout({
               <div>
                 <h3 className="footer-heading">Contact Us</h3>
                 <p className="footer-text">
-                  <strong>Director DAAP</strong><br />
+                  <strong>Director of Academic Audit and Planning (DAA&P)</strong><br />
                   JNTU-GV, Vizianagaram<br />
-                  Email: daap@jntugv.edu.in
+                  Official: daap@jntugv.edu.in<br />
+                  Office: daapoffice@jntugv.edu.in
                 </p>
               </div>
             </div>
             <div className="footer-bottom">
-              &copy; {new Date().getFullYear()} JNTU-GV Vizianagaram. All Rights Reserved.
+              &copy; {new Date().getFullYear()} JNTU-GV Vizianagaram. All Rights Reserved. <br />
+              This site is Developed & Maintained by <a href="https://dmc.jntugv.edu.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: '600' }}>Digital Monitoring Cell, JNTU-GV</a>
             </div>
           </div>
         </footer>
