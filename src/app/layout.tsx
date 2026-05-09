@@ -95,38 +95,55 @@ export default function RootLayout({
 
         <main>{children}</main>
 
-        <footer className="footer">
+        <footer className="footer" style={{ borderTop: '1px solid #e2e8f0', backgroundColor: '#f8fafc', paddingTop: '5rem', paddingBottom: '3rem' }}>
           <div className="container">
-            <div className="footer-grid">
-              <div>
-                <h3 className="footer-heading">Directorate of Academic Audit and Planning (DA&P)</h3>
-                <p className="footer-text">
-                  Jawaharlal Nehru Technological University - Gurajada, Vizianagaram<br />
-                  Ensuring academic excellence and comprehensive planning for constituent and affiliated colleges.
+            <div className="footer-grid" style={{ marginBottom: '4rem' }}>
+              <div style={{ flex: '1.5', minWidth: '300px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <img src="/favicon.ico" alt="JNTU-GV Logo" style={{ height: '50px', width: 'auto' }} />
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '900', color: '#0f172a', margin: 0 }}>JNTU-GV DAAP</h3>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, fontWeight: '600' }}>Directorate of Academic Audit & Planning</p>
+                  </div>
+                </div>
+                <p style={{ color: '#475569', fontSize: '1rem', lineHeight: '1.7', maxWidth: '400px' }}>
+                  Setting the benchmark for technical education and institutional planning in the North Coastal Andhra region.
                 </p>
               </div>
               <div>
-                <h3 className="footer-heading">Quick Links</h3>
+                <h3 className="footer-heading" style={{ color: '#0f172a', fontWeight: '800', marginBottom: '1.5rem' }}>Quick Access</h3>
                 <ul className="footer-links">
-                  <li><Link href="/syllabus" className="footer-link">Academic Syllabus</Link></li>
+                  <li><Link href="/syllabus" className="footer-link">Syllabus Repository</Link></li>
                   <li><Link href="/calendar" className="footer-link">Academic Calendar</Link></li>
                   <li><Link href="/affiliated" className="footer-link">Affiliated Colleges</Link></li>
-                  <li><Link href="/circulars" className="footer-link">Circulars</Link></li>
+                  <li><Link href="/circulars" className="footer-link">DAAP Circulars</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="footer-heading">Contact Us</h3>
-                <p className="footer-text">
-                  <strong>Director of Academic Audit and Planning (DAA&P)</strong><br />
-                  JNTU-GV, Vizianagaram<br />
-                  Official: daap@jntugv.edu.in<br />
-                  Office: daapoffice@jntugv.edu.in
-                </p>
+                <h3 className="footer-heading" style={{ color: '#0f172a', fontWeight: '800', marginBottom: '1.5rem' }}>Governance</h3>
+                <ul className="footer-links">
+                  <li><Link href="/regulations" className="footer-link">Academic Regulations</Link></li>
+                  <li><Link href="/director" className="footer-link">Director's Message</Link></li>
+                  <li><Link href="/audits" className="footer-link">Academic Audits</Link></li>
+                  <li><Link href="/contact" className="footer-link">Office Contact</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="footer-heading" style={{ color: '#0f172a', fontWeight: '800', marginBottom: '1.5rem' }}>Official Contact</h3>
+                <div style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.8' }}>
+                  <p style={{ margin: '0 0 0.5rem 0' }}>📍 JNTU-GV Campus, Vizianagaram</p>
+                  <p style={{ margin: '0 0 0.5rem 0' }}>📧 <a href="mailto:daap@jntugv.edu.in" style={{ color: 'var(--primary)', fontWeight: '600', textDecoration: 'none' }}>daap@jntugv.edu.in</a></p>
+                  <p style={{ margin: 0 }}>📞 +91 08922 277388</p>
+                </div>
               </div>
             </div>
-            <div className="footer-bottom">
-              &copy; {new Date().getFullYear()} JNTU-GV Vizianagaram. All Rights Reserved. <br />
-              This site is Developed & Maintained by <a href="https://dmc.jntugv.edu.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: '600' }}>Digital Monitoring Cell, JNTU-GV</a>
+            <div className="footer-bottom" style={{ borderTop: '1px solid #e2e8f0', paddingTop: '2.5rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '0.9rem', color: '#64748b', margin: 0 }}>
+                &copy; {new Date().getFullYear()} Jawaharlal Nehru Technological University - Gurajada, Vizianagaram. All Rights Reserved.
+              </p>
+              <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.75rem' }}>
+                Designed & Developed by <a href="https://dmc.jntugv.edu.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: '700', textDecoration: 'none' }}>Digital Monitoring Cell (DMC)</a>
+              </p>
             </div>
           </div>
         </footer>

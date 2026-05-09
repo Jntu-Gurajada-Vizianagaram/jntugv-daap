@@ -26,8 +26,6 @@ export default function SyllabusPage() {
         const response = await fetch('https://api.jntugv.edu.in/api/updates/allnotifications');
         if (!response.ok) throw new Error('Failed to fetch syllabus data');
         const data: Notification[] = await response.json();
-        
-        // Filter only items where update_type is 'syllabus'
         const syllabusData = data.filter(item => item.update_type === 'syllabus');
         setSyllabi(syllabusData);
       } catch (err: any) {
@@ -37,7 +35,6 @@ export default function SyllabusPage() {
         setLoading(false);
       }
     }
-
     fetchSyllabi();
   }, []);
 
@@ -47,111 +44,112 @@ export default function SyllabusPage() {
   );
 
   return (
-    <div className="container" style={{ padding: '4rem 0' }}>
-      <h1 className="section-title">Academic Syllabus</h1>
-      
-      <div className="card" style={{ padding: '2rem' }}>
-        <p className="card-text" style={{ fontSize: '1.1rem', marginBottom: '1.5rem' }}>
-          Access the latest approved course structures and detailed academic syllabi designed by the Directorate of Academic Audit and Planning for various UG and PG programs.
-        </p>
-
-        <div style={{ backgroundColor: '#f8fafc', borderLeft: '4px solid var(--primary)', padding: '1.5rem', marginBottom: '2rem', borderRadius: '0.375rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-          <div>
-            <h3 style={{ color: '#0f172a', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Official Syllabus Archives</h3>
-            <p style={{ color: '#475569', margin: 0 }}>View comprehensive, branch-wise PDFs for R25, R24, R23, R16, and R13 directly on the university's static portal.</p>
-          </div>
-          <a href="https://jntugv.edu.in/academics/academic-syllabus" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', backgroundColor: '#e2e8f0', color: '#1e293b', fontWeight: '600', borderRadius: '0.375rem', textDecoration: 'none', transition: 'background-color 0.2s' }}>
-            Open Archives <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          </a>
+    <div className="bg-pattern" style={{ minHeight: '100vh', padding: '4rem 0' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h1 className="section-title">Academic Syllabus</h1>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
+            Access the latest approved course structures and detailed academic syllabi for all UG and PG programs.
+          </p>
         </div>
 
-        <h3 style={{ color: '#0f172a', marginBottom: '1rem', fontSize: '1.25rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.5rem' }}>Latest Syllabus Updates via API</h3>
-
-        {/* Search Bar */}
-        <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', border: '1px solid #cbd5e1', borderRadius: '0.375rem', padding: '0.5rem 1rem', backgroundColor: 'white', maxWidth: '500px' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input 
-            type="text" 
-            placeholder="Search syllabus by course name..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', border: 'none', outline: 'none', fontSize: '1rem', color: '#0f172a' }}
-          />
-        </div>
-
-        {/* Content Area */}
-        {loading ? (
-          <div style={{ textAlign: 'center', padding: '4rem 2rem', color: '#64748b' }}>
-            <div style={{ display: 'inline-block', width: '40px', height: '40px', border: '4px solid #e2e8f0', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '1rem' }}></div>
-            <p>Fetching official Academic Syllabus from JNTU-GV API...</p>
-            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        <div className="card" style={{ padding: '2.5rem', marginBottom: '3rem' }}>
+          <div style={{ backgroundColor: 'rgba(0, 75, 141, 0.03)', borderLeft: '5px solid var(--primary)', padding: '2rem', marginBottom: '3rem', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
+            <div style={{ flex: '1', minWidth: '300px' }}>
+              <h3 style={{ color: '#0f172a', marginBottom: '0.75rem', fontSize: '1.25rem', fontWeight: '800' }}>Official Syllabus Archives</h3>
+              <p style={{ color: '#475569', margin: 0, fontSize: '1rem', lineHeight: '1.6' }}>View comprehensive, branch-wise PDFs for R25, R23, R20, R19, and R16 directly on the university's static portal.</p>
+            </div>
+            <a href="https://jntugv.edu.in/academics/academic-syllabus" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.8rem 1.5rem', fontWeight: '700' }}>
+              Open Archives <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
           </div>
-        ) : error ? (
-          <div style={{ padding: '2rem', backgroundColor: '#fef2f2', borderLeft: '4px solid #ef4444', color: '#991b1b', borderRadius: '0.5rem' }}>
-            {error}
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+            <h3 style={{ color: '#0f172a', fontSize: '1.5rem', fontWeight: '800' }}>Recent Updates</h3>
+            <div style={{ display: 'flex', alignItems: 'center', border: '1px solid var(--border)', borderRadius: '50px', padding: '0.6rem 1.5rem', backgroundColor: 'white', width: '100%', maxWidth: '400px' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.75rem' }}>
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                placeholder="Search by course or year..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{ width: '100%', border: 'none', outline: 'none', fontSize: '1rem', background: 'transparent' }}
+              />
+            </div>
           </div>
-        ) : (
-          <div style={{ overflowX: 'auto', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
-              <thead>
-                <tr style={{ backgroundColor: '#2D1B5E', color: 'white' }}>
-                  <th style={{ padding: '1rem', textAlign: 'center', fontWeight: '600', width: '15%' }}>Date Issued</th>
-                  <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '600', width: '65%' }}>Syllabus Title</th>
-                  <th style={{ padding: '1rem', textAlign: 'center', fontWeight: '600', width: '20%' }}>Download</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredSyllabi.length > 0 ? (
-                  filteredSyllabi.map((syl, index) => (
-                    <tr key={syl.id} style={{ borderBottom: '1px solid #e2e8f0', backgroundColor: index % 2 === 0 ? 'white' : '#f8fafc', transition: 'background-color 0.2s' }}>
-                      <td style={{ padding: '1rem', textAlign: 'center' }}>
-                        <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#f1f5f9', borderRadius: '0.375rem', padding: '0.25rem 0.75rem', border: '1px solid #e2e8f0' }}>
-                          <span style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--primary)' }}>{syl.day}</span>
-                          <span style={{ fontSize: '0.8rem', fontWeight: '600', color: '#64748b', textTransform: 'uppercase' }}>{syl.month} {syl.year}</span>
-                        </div>
-                      </td>
-                      <td style={{ padding: '1rem', fontWeight: '500', color: '#334155', lineHeight: '1.5' }}>
-                        {syl.title}
-                      </td>
-                      <td style={{ padding: '1rem', textAlign: 'center' }}>
-                        <a 
-                          href={syl.file_link} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          style={{ 
-                            display: 'inline-flex', 
-                            alignItems: 'center', 
-                            gap: '0.5rem', 
-                            backgroundColor: 'var(--primary)', 
-                            color: 'white', 
-                            padding: '0.5rem 1rem', 
-                            borderRadius: '0.375rem', 
-                            fontWeight: '500',
-                            fontSize: '0.9rem',
-                            textDecoration: 'none',
-                            transition: 'background-color 0.2s'
-                          }}
-                          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
-                          onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                          PDF
-                        </a>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={3} style={{ padding: '3rem', textAlign: 'center', color: '#64748b' }}>No academic syllabus documents found matching your search.</td>
+
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+              <div style={{ display: 'inline-block', width: '48px', height: '48px', border: '4px solid #f1f5f9', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '1.5rem' }}></div>
+              <p style={{ color: 'var(--text-muted)', fontWeight: '500' }}>Loading syllabus data...</p>
+            </div>
+          ) : error ? (
+            <div style={{ padding: '2rem', backgroundColor: '#fef2f2', borderLeft: '4px solid #ef4444', color: '#991b1b', borderRadius: '12px' }}>
+              {error}
+            </div>
+          ) : (
+            <div style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid var(--border)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ backgroundColor: 'var(--primary)', color: 'white' }}>
+                    <th style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '700', width: '15%', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Release</th>
+                    <th style={{ padding: '1.25rem 1.5rem', textAlign: 'left', fontWeight: '700', width: '65%', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Syllabus Description</th>
+                    <th style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '700', width: '20%', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Action</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        )}
+                </thead>
+                <tbody>
+                  {filteredSyllabi.length > 0 ? (
+                    filteredSyllabi.map((syl, index) => (
+                      <tr key={syl.id} style={{ borderBottom: '1px solid var(--border)', backgroundColor: index % 2 === 0 ? 'white' : '#fcfcfc', transition: 'background-color 0.2s' }}>
+                        <td style={{ padding: '1.5rem' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#f1f5f9', borderRadius: '12px', padding: '0.5rem', border: '1px solid #e2e8f0' }}>
+                            <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--primary)', lineHeight: '1' }}>{syl.day}</span>
+                            <span style={{ fontSize: '0.7rem', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', marginTop: '0.25rem' }}>{syl.month} {syl.year}</span>
+                          </div>
+                        </td>
+                        <td style={{ padding: '1.5rem', fontWeight: '600', color: '#334155', lineHeight: '1.6', fontSize: '1.05rem' }}>
+                          {syl.title}
+                        </td>
+                        <td style={{ padding: '1.5rem', textAlign: 'center' }}>
+                          <a 
+                            href={syl.file_link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="btn"
+                            style={{ 
+                              backgroundColor: 'rgba(0, 75, 141, 0.1)', 
+                              color: 'var(--primary)', 
+                              padding: '0.6rem 1.25rem', 
+                              borderRadius: '10px', 
+                              fontWeight: '700',
+                              fontSize: '0.85rem',
+                              textDecoration: 'none',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.5rem'
+                            }}
+                            onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary)'; e.currentTarget.style.color = 'white'; }}
+                            onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0, 75, 141, 0.1)'; e.currentTarget.style.color = 'var(--primary)'; }}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            View PDF
+                          </a>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={3} style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-muted)' }}>No academic syllabus documents found matching your search.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

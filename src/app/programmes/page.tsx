@@ -45,53 +45,71 @@ export default function ProgrammesPage() {
   );
 
   return (
-    <div className="container" style={{ padding: '4rem 0' }}>
-      <h1 className="section-title">Programmes Offered</h1>
-      
-      <div className="card" style={{ padding: '2rem' }}>
-        {/* Search Bar matching JNTU-GV design */}
-        <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', border: '1px solid #cbd5e1', borderRadius: '0.375rem', padding: '0.5rem 1rem', backgroundColor: 'white' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input 
-            type="text" 
-            placeholder="Search programs..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', border: 'none', outline: 'none', fontSize: '1rem', color: '#0f172a' }}
-          />
+    <div className="bg-pattern" style={{ minHeight: '100vh', padding: '4rem 0' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h1 className="section-title">Programmes Offered</h1>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
+            Official list of undergraduate and postgraduate technical programmes approved by JNTU-GV.
+          </p>
         </div>
 
-        {/* Table exactly matching JNTU-GV official format */}
-        <div style={{ overflowX: 'auto', borderRadius: '0.5rem', border: '1px solid #e2e8f0' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
-            <thead>
-              <tr style={{ backgroundColor: '#2D1B5E', color: 'white' }}>
-                <th style={{ padding: '1rem', textAlign: 'left', fontWeight: '600' }}>SNo</th>
-                <th style={{ padding: '1rem', textAlign: 'center', fontWeight: '600' }}>Branch Name</th>
-                <th style={{ padding: '1rem', textAlign: 'center', fontWeight: '600' }}>AP EAPCET Code</th>
-                <th style={{ padding: '1rem', textAlign: 'center', fontWeight: '600' }}>JNTU-GV Branch Code</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProgrammes.length > 0 ? (
-                filteredProgrammes.map((prog, index) => (
-                  <tr key={prog.code} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '1rem', textAlign: 'left' }}>{index + 1}</td>
-                    <td style={{ padding: '1rem', textAlign: 'center' }}>{prog.name}</td>
-                    <td style={{ padding: '1rem', textAlign: 'center' }}>{prog.eapcet}</td>
-                    <td style={{ padding: '1rem', textAlign: 'center' }}>{prog.code}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={4} style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>No programs found matching "{searchTerm}"</td>
+        <div className="card" style={{ padding: '2.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', border: '1px solid var(--border)', borderRadius: '50px', padding: '0.6rem 1.5rem', backgroundColor: '#f8fafc', width: '100%', maxWidth: '450px' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.75rem' }}>
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                placeholder="Search by branch name or code..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{ width: '100%', border: 'none', outline: 'none', fontSize: '1rem', background: 'transparent' }}
+              />
+            </div>
+            <div style={{ backgroundColor: 'rgba(0, 75, 141, 0.05)', color: 'var(--primary)', padding: '0.5rem 1rem', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700' }}>
+              {allProgrammes.length} Programmes Listed
+            </div>
+          </div>
+
+          <div style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid var(--border)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--primary)', color: 'white' }}>
+                  <th style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '700', width: '80px' }}>S.No</th>
+                  <th style={{ padding: '1.25rem 1.5rem', textAlign: 'left', fontWeight: '700' }}>Branch Name</th>
+                  <th style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '700', width: '180px' }}>AP EAPCET Code</th>
+                  <th style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '700', width: '180px' }}>University Code</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredProgrammes.length > 0 ? (
+                  filteredProgrammes.map((prog, index) => (
+                    <tr key={prog.code} style={{ borderBottom: '1px solid var(--border)', backgroundColor: index % 2 === 0 ? 'white' : '#fcfcfc', transition: 'background-color 0.2s' }}>
+                      <td style={{ padding: '1.25rem 1.5rem', textAlign: 'center', fontWeight: '600', color: 'var(--text-muted)' }}>{index + 1}</td>
+                      <td style={{ padding: '1.25rem 1.5rem', fontWeight: '700', color: '#0f172a' }}>{prog.name}</td>
+                      <td style={{ padding: '1.25rem 1.5rem', textAlign: 'center' }}>
+                        <span style={{ backgroundColor: '#f1f5f9', color: 'var(--primary)', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: '800' }}>
+                          {prog.eapcet}
+                        </span>
+                      </td>
+                      <td style={{ padding: '1.25rem 1.5rem', textAlign: 'center' }}>
+                        <span style={{ backgroundColor: 'rgba(0, 75, 141, 0.05)', color: 'var(--primary)', padding: '0.35rem 0.75rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: '800', border: '1px solid rgba(0, 75, 141, 0.1)' }}>
+                          {prog.code}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4} style={{ padding: '4rem', textAlign: 'center', color: 'var(--text-muted)' }}>No programmes found matching your search.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
