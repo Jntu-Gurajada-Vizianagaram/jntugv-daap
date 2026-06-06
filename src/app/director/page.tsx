@@ -19,15 +19,18 @@ export default function DirectorPage() {
                 width: '180px', 
                 height: '180px', 
                 borderRadius: '50%', 
-                backgroundColor: '#f1f5f9', 
                 margin: '0 auto 1.5rem',
                 border: '4px solid var(--primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '4rem'
+                overflow: 'hidden'
               }}>
-                👩‍🏫
+                <img
+                  src="https://jntugv.edu.in/static/media/jayasuma_daap.25e0843f00d08ee20077.jpeg"
+                  alt="Prof. Dr. G. Jaya Suma"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
               </div>
               <h2 style={{ fontSize: '1.5rem', color: '#0f172a', marginBottom: '0.5rem', fontWeight: '800' }}>Prof. Dr. G. Jaya Suma</h2>
               <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
